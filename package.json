@@ -1,0 +1,11 @@
+{
+  "name": "terrablox",
+  "version": "0.0.1",
+  "scripts": {
+    "test": "http-server",
+    "document": "jsdoc -c conf.json"
+  },
+  "devDependencies": {
+    "http-server": "^0.10.0"
+  }
+}

@@ -1,0 +1,6 @@
+{    "meta": {        "name": "cactus_1",        "type": "cactus",        "biome": ["desert"],        "size": "auto"    },    
+    "model": [
+        {"type":"cactus", "x":0, "y":0, "z":0},
+        {"type":"cactus", "x":0, "y":0, "z":1},        {"type":"cactus", "x":0, "y":0, "z":2}
+    ]
+}

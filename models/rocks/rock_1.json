@@ -1,0 +1,5 @@
+{    "meta": {        "name": "rock_1",        "type": "rock",        "biome": ["tundra"],        "size": "auto"    },    
+    "model": [
+        {"type":"stone", "x":0, "y":0, "z":0}
+    ]
+}
