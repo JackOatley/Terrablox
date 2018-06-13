@@ -7,8 +7,8 @@
 /** @const {number}  */ var CHUNK_WIDTH       = 64;
 /** @const {number}  */ var CHUNK_HEIGHT      = 128;
 /** @const {number}  */ var CHUNK_DEPTH       = 64;
-/** @const {number}  */ var TEXTURE_X_TILES   = 4;
-/** @const {number}  */ var TEXTURE_Y_TILES   = 4;
+/** @const {number}  */ var TEXTURE_X_TILES = 4;
+/** @const {number}  */ var TEXTURE_Y_TILES = 4;
 
 /** @const {number}  */ var WORKER_MESSAGES_MIN    = 2;
 /** @const {number}  */ var WORKER_RECURSION_LIMIT = 512;

@@ -8,17 +8,15 @@ var BLOX = (function( module ) {
 		var border = this.border = 64;
 		
 		this.tileSize = 128;
-		this.rawWidth = this.tileSize * 4 + border * 8;
-		this.rawHeight = this.tileSize * 4 + border * 8;
+		this.rawWidth = this.tileSize * TEXTURE_X_TILES + border * 8;
+		this.rawHeight = this.tileSize * TEXTURE_Y_TILES + border * 8;
 		this.width = this.rawWidth;
 		this.height = this.rawHeight;
-		console.log( this.width, this.height );
-		if ( !Math.isPowerOf2( this.width ) ) {
-			this.width = Math.nearestUpperPowerOf2( this.width );
+		if (!Math.isPowerOf2(this.width)) {
+			this.width = Math.nearestUpperPowerOf2(this.width);
 			this.height = this.width;
 		}
 		
-		console.log( this.width, this.height );
 		this.ready = 0;
 		
 		this.onReady = undefined;
@@ -52,6 +50,7 @@ var BLOX = (function( module ) {
 		for ( index = 0; index < 16; index += 1 ) {
 			
 			var position = this.indexToTilePosition( index );
+			console.log(position);
 			var key = keys[index];
 			
 			if ( key !== undefined ) {
@@ -75,7 +74,7 @@ var BLOX = (function( module ) {
 		};
 		
 		
-		this.diffuse = new THREE.Texture( this.canvas );
+		this.diffuse = new THREE.CanvasTexture(this.canvas);
 		this.diffuse.anisotropy = engine.renderer.capabilities.getMaxAnisotropy();
 		this.diffuse.generateMipmaps = false;
 		this.diffuse.magFilter = THREE.LinearFilter;
@@ -176,9 +175,11 @@ var BLOX = (function( module ) {
 		 *
 		 */
 		generateMipmaps: function() {
-			var size = Math.min( this.width, this.height );
+			var size = Math.min(this.width, this.height);
+			this.diffuse.mipmaps[0] = this.canvas;
+			size = size >> 1;
 			for ( var n = 0; size >= 1; size = size >> 1 ) {
-				this.diffuse.mipmaps[ n++ ] = this.mipmap( size );
+				this.diffuse.mipmaps[n++] = this.mipmap(size);
 			}
 		},
 		
@@ -196,21 +197,16 @@ var BLOX = (function( module ) {
 
 			context.fillStyle = "#444";
 			if ( size <= 4 ) {
-				
 				// size too small to repreent tiles accurately, use full rect
 				context.fillRect( 0, 0, size, size );
-				
 			} else {
-				
 				// draw rects in the unused space, so it's not transparent
-				const w = this.width,
-					  h = this.height,
-					  rw = this.rawWidth,
-					  rh = this.rawHeight;
-				
-				context.fillRect( 0, 0, size, (h-rh)*scale );
-				context.fillRect( size-(w-rw)*scale, 0, (w-rw)*scale, size );
-				
+				const w = this.width;
+				const h = this.height;
+				const rw = this.rawWidth;
+				const rh = this.rawHeight;
+				context.fillRect(0, 0, size, (h-rh)*scale);
+				context.fillRect(size-(w-rw)*scale, 0, (w-rw)*scale, size);
 			}
 			
 			// draw canvas at offsets to fix alpha bleeding
@@ -222,23 +218,21 @@ var BLOX = (function( module ) {
 			}
 			
 			// draw canvas in it's actual place
-			context.drawImage( this.canvas, 0, 0, size, size );
-			
-			//window.open(imageCanvas.toDataURL("image/png"), "_blank" );
-			
+			context.drawImage(this.canvas, 0, 0, size, size);
 			return imageCanvas;
-		
 		},
 		
 		/**
-		 *
+		 * Returns tile x and y position from the given index.
+		 * @param {number} index Tile index.
 		 */
-		indexToTilePosition: function( index ) {
-		
-			var y = Math.floor( index / TEXTURE_X_TILES ); 
-			var x = index - ( y * TEXTURE_X_TILES );
-			return { x: x, y: 3-y };
-		
+		indexToTilePosition: function(index) {
+			var y = Math.floor(index / TEXTURE_X_TILES); 
+			var x = index - (y * TEXTURE_X_TILES);
+			return {
+				x: x,
+				y: 3-y
+			};
 		}
 		
 	}
