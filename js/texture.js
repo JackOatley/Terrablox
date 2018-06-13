@@ -79,7 +79,7 @@ var BLOX = (function( module ) {
 		this.diffuse.anisotropy = engine.renderer.capabilities.getMaxAnisotropy();
 		this.diffuse.generateMipmaps = false;
 		this.diffuse.magFilter = THREE.LinearFilter;
-		if ( ENABLE_MIPMAPPING ) {
+		if (ENABLE_MIPMAPPING) {
 			this.diffuse.minFilter = THREE.LinearMipMapLinearFilter;
 		} else {
 			this.diffuse.minFilter = THREE.LinearFilter;
@@ -126,10 +126,8 @@ var BLOX = (function( module ) {
 				this.ready += 1;
 				if ( this.ready === this.images ) {
 					
-					if ( ENABLE_MIPMAPPING ) {
-						
+					if (ENABLE_MIPMAPPING) {
 						this.generateMipmaps();
-						
 					}
 					
 					//
@@ -178,19 +176,17 @@ var BLOX = (function( module ) {
 		 *
 		 */
 		generateMipmaps: function() {
-		
 			var size = Math.min( this.width, this.height );
 			for ( var n = 0; size >= 1; size = size >> 1 ) {
 				this.diffuse.mipmaps[ n++ ] = this.mipmap( size );
 			}
-		
 		},
 		
 		/**
 		 *
 		 */
 		mipmap: function( size ) {
-		
+			console.log("Generation mipmap", size);
 			let imageCanvas = document.createElement( "canvas" ),
 				context = imageCanvas.getContext( "2d" ),
 				scale = size / this.height,

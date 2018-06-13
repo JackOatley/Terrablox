@@ -1,7 +1,7 @@
 
-/** @const {boolean} */ var ENABLE_EDGES      = true;
+/** @const {boolean} */ var ENABLE_EDGES = true;
 /** @const {boolean} */ var ENABLE_MIPMAPPING = false;
-/** @const {boolean} */ var ENABLE_VAO        = true;
+/** @const {boolean} */ var ENABLE_VAO = true;
 
 /** @const {number}  */ var WORLD_HEIGHT      = 128;
 /** @const {number}  */ var CHUNK_WIDTH       = 64;

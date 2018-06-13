@@ -343,8 +343,7 @@ var BLOX = ( function( module ) {
 			plane.position.z = depth / 2;
 			plane.rotateX( -90 * Math.PI / 180 );
 			
-			engine.scene.add( plane );
-		
+			engine.scene.add(plane);
 		}
         
 	}

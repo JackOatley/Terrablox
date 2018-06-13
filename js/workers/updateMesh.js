@@ -3,7 +3,7 @@
 importScripts( "../constants.js" );
 importScripts( "../utils.js" );
 importScripts( "../numbers.js" );
-importScripts( "../lib/three.min.js" );
+importScripts( "../lib/three-r87.min.js" );
 importScripts( "../legacy/generateCubePrefab.js" );
 importScripts( "../blox-block-index.js" );
 var box = BLOX.box;

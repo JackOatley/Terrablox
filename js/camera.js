@@ -225,6 +225,7 @@ var BLOX = (function( module ) {
 			  y: this.position.y + this.lookAtVector.y,
 			  z: this.position.z + this.lookAtVector.z
 			});
+			this.sceneCamera.updateProjectionMatrix();
 			
 		},
 
