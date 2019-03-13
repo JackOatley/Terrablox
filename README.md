@@ -8,6 +8,7 @@ I'll continue to tidy it up and work on it some more.
 Uses an older version of three.js, I'll have to gradually update a version at a time.
 Newer version just don't render anything and I'm not sure why.
 
+![Alt text](preview.png "Preview")
 
 # Running
 
